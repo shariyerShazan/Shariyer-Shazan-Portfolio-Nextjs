@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&amp;display=swap');
+    .text {
+      font-family: 'DM Mono', monospace;
+      font-size: 84px;
+      font-weight: 500;
+      fill: #ffffff;
+    }
+    .bg {
+      fill: #060606;
+      stroke: rgba(255,255,255,0.12);
+      stroke-width: 2;
+    }
+  </style>
+  <rect x="2" y="2" width="124" height="124" rx="28" class="bg" />
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" class="text">S</text>
+</svg>
