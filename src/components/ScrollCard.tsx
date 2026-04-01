@@ -4,18 +4,16 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export default function ScrollCard() {
+export default function ScrollCard({ text }: { text: string }) {
   const containerRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     
-    const rawText = "Building digital systems with precision and purpose. A full-stack developer crafting **high-performance** web experiences and **scalable architectures** — obsessed with every detail, from **pixel-perfect interfaces** to clean, maintainable code that powers the future of the web.";
-
     if (!containerRef.current) return;
     
     let html = '';
-    const parts = rawText.split(/(\*\*[^*]+\*\*)/);
+    const parts = text.split(/(\*\*[^*]+\*\*)/);
 
     parts.forEach(part => {
       if (part.startsWith('**') && part.endsWith('**')) {
@@ -56,7 +54,7 @@ export default function ScrollCard() {
     return () => {
       st.kill();
     };
-  }, []);
+  }, [text]);
 
   return (
     <section id="scroll-card" className="relative z-20 bg-black">

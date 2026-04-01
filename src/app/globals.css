@@ -4,13 +4,31 @@
   --font-display: 'Instrument Serif', serif;
   --font-mono: 'DM Mono', monospace;
   --font-body: 'DM Sans', sans-serif;
+  --font-admin: "Inter", sans-serif;
 
   --color-white: #ffffff;
   --color-mid: rgba(255, 255, 255, 0.45);
   --color-dim: rgba(255, 255, 255, 0.1);
   --color-black: #060606;
   --color-accent: #4a9eff;
+  --color-brand: #ea285a;
 }
+
+.admin-layout, .admin-layout * {
+  cursor: auto !important;
+}
+
+.admin-layout #cur, 
+.admin-layout #cur-r, 
+.admin-layout #noise, 
+.admin-layout #scanline {
+  display: none !important;
+}
+
+.admin-layout body {
+  cursor: auto !important;
+}
+
 
 *,
 *::before,

@@ -3,7 +3,14 @@
 import { useEffect } from "react";
 import gsap from "gsap";
 
-export default function Hero() {
+interface HeroData {
+  heading: string;
+  subheading: string | null;
+  description: string | null;
+  image: string | null;
+}
+
+export default function Hero({ heroData }: { heroData: HeroData | null }) {
   useEffect(() => {
     const tl = gsap.timeline({ delay: 1.4 });
 
@@ -44,7 +51,7 @@ export default function Hero() {
     >
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hero-bg.png"
+          src={heroData?.image || "/images/hero-bg.png"}
           alt=""
           className="w-full h-full object-cover object-center"
           aria-hidden="true"
@@ -58,7 +65,7 @@ export default function Hero() {
       >
         const Shazan = {"{"}
         <br />
-        &nbsp;&nbsp;role: &quot;Software Engineer&quot;,
+        &nbsp;&nbsp;role: &quot;{heroData?.subheading || "Software Engineer"}&quot;,
         <br />
         &nbsp;&nbsp;location: &quot;BD&quot;,
         <br />
@@ -67,13 +74,20 @@ export default function Hero() {
         {"}"}
       </div>
 
-      <p className="hero-tag absolute top-[clamp(100px,18vh,160px)] left-[clamp(20px,4vw,64px)] font-mono text-[11px] max-sm:text-[9px] tracking-[0.3em] max-sm:tracking-[0.2em] text-white/[0.28] uppercase opacity-0 translate-y-3 flex items-center gap-3.5 z-10">
+      <div className="relative z-10 max-w-[1200px] mb-8">
+        <h1 
+           className="hero-h1 font-display font-bold text-[clamp(48px,9vw,140px)] leading-[0.85] tracking-[-0.03em] text-white"
+           dangerouslySetInnerHTML={{ __html: heroData?.heading || "I build digital<br/>products." }}
+        />
+      </div>
+
+      <p className="hero-tag relative font-mono text-[11px] max-sm:text-[9px] tracking-[0.3em] max-sm:tracking-[0.2em] text-white/[0.28] uppercase opacity-0 translate-y-3 flex items-center gap-3.5 z-10">
         <span className="block w-7 max-sm:w-4 h-px bg-white/[0.2]"></span>
         <span className="max-sm:hidden">
-          Software Engineer &mdash; Dhaka, Bangladesh
+          {heroData?.subheading || "Software Engineer"} &mdash; Dhaka, Bangladesh
         </span>
         <span className="sm:hidden">
-          Software Engineer &amp; Eng &mdash; Dhaka
+          {heroData?.subheading || "Software Engineer"} &mdash; Dhaka
         </span>
       </p>
 
