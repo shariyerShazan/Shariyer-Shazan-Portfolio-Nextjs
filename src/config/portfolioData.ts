@@ -88,7 +88,27 @@ export const portfolioData: PortfolioData = {
   ],
   openSourceContributions: [
     {
-      project: "NestJS — Core Framework",
+      project: "NestJS — Core Framework (Discovery Service)",
+      repoUrl: "https://github.com/nestjs/nest",
+      prUrl: "https://github.com/nestjs/nest/pull/17618",
+      prNumber: "#17618",
+      status: "Merged into Master Branch",
+      description: [
+        "Core bug fix: Resolved issue where DiscoveryService.getProviders({ metadataKey }) failed to discover custom decorator providers registered via useValue.",
+        "Fixed DiscoverableMetaHostCollection condition (!instanceWrapper.metatype || instanceWrapper.inject) to properly fall back to instance.constructor for value providers when metatype is null.",
+        "Added comprehensive unit and regression tests in discovery-service.spec.ts and updated existing meta-host collection test cases.",
+      ],
+      highlights: [
+        "Fixed DiscoveryService provider discovery for useValue registrations with custom decorators",
+        "Corrected metadata key lookup to fall back to instance.constructor when metatype is null",
+        "Optimized instance getter evaluation, reducing unnecessary getter reads for useClass providers",
+        "Added regression test suite covering DiscoveryService with custom decorators and value providers",
+        "Successfully merged into NestJS master branch — PR #17618 (Fixes #17617)",
+      ],
+      tech: ["NestJS", "TypeScript", "Node.js", "Discovery Service", "Jest", "Metadata Reflection"],
+    },
+    {
+      project: "NestJS — Core Framework (Lazy Loading)",
       repoUrl: "https://github.com/nestjs/nest",
       prUrl: "https://github.com/nestjs/nest/pull/17430",
       prNumber: "#17430",
