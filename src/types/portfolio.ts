@@ -60,6 +60,16 @@ export interface Certificate {
   fileUrl?: string;
 }
 
+export interface PullRequestItem {
+  prNumber: string;
+  prUrl: string;
+  title: string;
+  status?: string;
+  description: string;
+  highlights?: string[];
+  tech?: string[];
+}
+
 export interface OpenSourceContribution {
   project: string;
   repoUrl?: string;
@@ -69,6 +79,7 @@ export interface OpenSourceContribution {
   description: string[];
   highlights?: string[];
   tech?: string[];
+  pullRequests?: PullRequestItem[];
 }
 
 export interface PortfolioData {

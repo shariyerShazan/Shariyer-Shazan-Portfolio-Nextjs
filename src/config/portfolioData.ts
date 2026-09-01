@@ -33,7 +33,7 @@ export const portfolioData: PortfolioData = {
   resumeLink:
     "https://drive.google.com/file/d/1vq9T0M7qWBFi7xLagAcx9nojvnApvJyQ/view?usp=sharing",
   careerObjective:
-    "Backend Engineer specializing in Node.js, NestJS, and event-driven microservices (Kafka, gRPC, Redis) with hands-on experience building LLM-integrated systems using OpenAI, LangChain, and the Model Context Protocol (MCP). Focused on applying expertise in scalable API design, distributed database architectures, and AI-driven systems to engineer reliable, production-grade backend solutions.",
+    "Backend Engineer specializing in Node.js, NestJS, and TypeScript, with hands-on experience designing event-driven microservices (Kafka, gRPC, Redis) and LLM-integrated systems using OpenAI, LangChain, and Model Context Protocol (MCP). NestJS core framework contributor skilled in scalable API design, distributed databases (PostgreSQL, MongoDB), and cloud-native deployments (Docker, AWS) to engineer reliable, production-grade backend systems.",
   languages: [
     "English (Fluent)",
     "Bangla (Native)",
@@ -41,7 +41,7 @@ export const portfolioData: PortfolioData = {
     "Urdu (Conversational)",
   ],
   about:
-    "I am a Backend Engineer focused on designing production-minded server architectures. I specialize in building scalable backend systems and distributed microservices using NestJS, Node.js, gRPC, Kafka, PostgreSQL, MongoDB, Redis, and Docker, alongside integrating advanced AI/LLM solutions via OpenAI API, LangChain, and the Model Context Protocol (MCP). Through development of enterprise platforms like Waave, I have engineered event-driven workflows, secure Double Ratchet-based E2EE chat, and autonomous AI agents designed to execute tasks across multi-service APIs cleanly and reliably.",
+    "I am a Backend Engineer specializing in Node.js, NestJS, and TypeScript, focused on designing scalable, production-minded server architectures. I specialize in building distributed systems and event-driven microservices using Apache Kafka, gRPC, Redis, PostgreSQL, and MongoDB, with a proven track record deploying via Docker and AWS. Through enterprise platforms like Waave, I have engineered high-performance APIs, secure Double Ratchet-based E2EE chat workflows, and autonomous AI agents integrated via OpenAI and the Model Context Protocol (MCP)—complemented by verified open-source contributions merged into the NestJS core framework.",
   education: [
     {
       school: "Southeast University",
@@ -88,42 +88,65 @@ export const portfolioData: PortfolioData = {
   ],
   openSourceContributions: [
     {
-      project: "NestJS — Core Framework (Discovery Service)",
+      project: "NestJS — Core Framework",
       repoUrl: "https://github.com/nestjs/nest",
-      prUrl: "https://github.com/nestjs/nest/pull/17618",
-      prNumber: "#17618",
-      status: "Merged into Master Branch",
+      status: "Official Core Contributor",
       description: [
-        "Core bug fix: Resolved issue where DiscoveryService.getProviders({ metadataKey }) failed to discover custom decorator providers registered via useValue.",
-        "Fixed DiscoverableMetaHostCollection condition (!instanceWrapper.metatype || instanceWrapper.inject) to properly fall back to instance.constructor for value providers when metatype is null.",
-        "Added comprehensive unit and regression tests in discovery-service.spec.ts and updated existing meta-host collection test cases.",
+        "Core framework contributor to NestJS master branch, authoring verified bug fixes across dependency injection, metadata reflection, lazy module loading, and logger lifecycle scoping.",
       ],
-      highlights: [
-        "Fixed DiscoveryService provider discovery for useValue registrations with custom decorators",
-        "Corrected metadata key lookup to fall back to instance.constructor when metatype is null",
-        "Optimized instance getter evaluation, reducing unnecessary getter reads for useClass providers",
-        "Added regression test suite covering DiscoveryService with custom decorators and value providers",
-        "Successfully merged into NestJS master branch — PR #17618 (Fixes #17617)",
+      tech: [
+        "NestJS Core",
+        "TypeScript",
+        "Dependency Injection",
+        "Discovery Service",
+        "Lazy Loading",
+        "Jest",
+        "Metadata Reflection",
       ],
-      tech: ["NestJS", "TypeScript", "Node.js", "Discovery Service", "Jest", "Metadata Reflection"],
-    },
-    {
-      project: "NestJS — Core Framework (Lazy Loading)",
-      repoUrl: "https://github.com/nestjs/nest",
-      prUrl: "https://github.com/nestjs/nest/pull/17430",
-      prNumber: "#17430",
-      status: "Merged into Master Branch",
-      description: [
-        "Core bug fix: Improved singleton provider reuse for lazily loaded modules, preventing unnecessary provider reconstruction and ensuring existing instances are correctly shared.",
-        "Added regression tests covering lazy module loading and singleton provider reuse.",
+      pullRequests: [
+        {
+          prNumber: "#17631",
+          prUrl: "https://github.com/nestjs/nest/pull/17631",
+          title: "Lazy Module Logger Lifecycle Restoration",
+          status: "Merged",
+          description:
+            "Fixed an issue where calling LazyModuleLoader.load({ logger: false }) permanently disabled InstanceLoader logging for all subsequent lazy loads across the application lifetime. Scoped the logger override strictly to single-invocation calls by capturing and restoring original logger state in a finally block.",
+          highlights: [
+            "Prevented permanent InstanceLoader silencing caused by application-scoped singleton mutation",
+            "Guaranteed logger restoration in a finally block handling both success and error paths",
+            "Added regression test suite in lazy-module-loader.spec.ts verifying subsequent un-silenced loads",
+          ],
+          tech: ["LazyModuleLoader", "InstanceLoader", "Logger Lifecycle", "Core Framework"],
+        },
+        {
+          prNumber: "#17618",
+          prUrl: "https://github.com/nestjs/nest/pull/17618",
+          title: "Provider Discovery for Custom Decorators & Value Providers",
+          status: "Merged",
+          description:
+            "Fixed DiscoveryService.getProviders({ metadataKey }) skipping custom decorator providers registered via useValue due to null metatype checks. Corrected DiscoverableMetaHostCollection logic to fall back to instance.constructor for value provider metadata reflection.",
+          highlights: [
+            "Resolved provider discovery failures for useValue registrations with custom decorators",
+            "Optimized getter evaluations, reducing unnecessary property accesses for useClass providers",
+            "Added comprehensive regression test suite in discovery-service.spec.ts",
+          ],
+          tech: ["DiscoveryService", "Metadata Reflection", "useValue", "Decorators"],
+        },
+        {
+          prNumber: "#17430",
+          prUrl: "https://github.com/nestjs/nest/pull/17430",
+          title: "Singleton Provider Reuse in Lazily Loaded Modules",
+          status: "Merged",
+          description:
+            "Fixed unnecessary provider reconstruction in lazily loaded modules, ensuring existing singleton instances are correctly shared and reused across lazy module loads instead of being re-instantiated.",
+          highlights: [
+            "Prevented redundant provider reconstruction during dynamic module loading",
+            "Preserved singleton provider lifecycle state across lazily loaded consumers",
+            "Added regression tests covering lazy loading singleton provider sharing",
+          ],
+          tech: ["LazyModuleLoader", "Dependency Injection", "Singleton Reuse"],
+        },
       ],
-      highlights: [
-        "Improved singleton provider reuse for lazily loaded modules",
-        "Prevented unnecessary provider reconstruction during dynamic module loading",
-        "Added comprehensive regression test suite covering lazy module loading",
-        "Successfully merged into the NestJS master branch — PR #17430",
-      ],
-      tech: ["NestJS", "TypeScript", "Node.js", "Dependency Injection", "Jest"],
     },
   ],
   techStack: [
